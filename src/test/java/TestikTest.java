@@ -1,27 +1,28 @@
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
 
 public class TestikTest extends TestBase {
 
   @Test
-  public void testEntityCreation() {
-    // Временно повторяем код для авторизации
+  public void test() {
     driver.get("https://www.zippyjot.com/");
     driver.manage().window().setSize(new Dimension(550, 699));
-    Credentials credentials = new Credentials("ruzalina15", "030703");
-    login(credentials);
 
-    // Начало сгенерированного кода из Katalon
-    driver.get("https://www.zippyjot.com/home/");
-    driver.findElement(By.name("notetitle")).click();
-    driver.findElement(By.name("notetitle")).sendKeys("test");
-    driver.findElement(By.id("textarea")).click();
-    driver.findElement(By.id("textarea")).sendKeys("yewgtedwe");
-//    driver.findElement(By.id("autosave")).click();
-    driver.findElement(By.name("makeprivate")).click();
-    driver.findElement(By.xpath("//body[@id='page-wrap']/div[2]/div/div[7]/button/span")).click();
-    // Конец сгенерированного кода из Katalon
+    // Your Katalon code adapted for Selenium WebDriver in Java
+    WebElement notetitle = driver.findElement(By.name("notetitle"));
+    notetitle.click();
+    notetitle.sendKeys("test");
+
+    WebElement textarea = driver.findElement(By.id("textarea"));
+    textarea.click();
+    textarea.sendKeys("uwdhjwjehwejfh");
+
+    WebElement button = driver.findElement(By.xpath("//body[@id='page-wrap']/form/div[4]/button"));
+    button.click();
+
+    // Additional test steps can be added here
   }
 
 
@@ -32,5 +33,4 @@ public class TestikTest extends TestBase {
     Credentials credentials = new Credentials("ruzalina15", "030703");
     login(credentials);
   }
-
 }
