@@ -18,7 +18,7 @@ public class TestBase {
         driver.findElement(By.cssSelector(".ui-button-text")).click();
     }
 
-    public void createEntity(String title, String content) {
+    public void test(String title, String content) {
         driver.findElement(By.name("notetitle")).click();
         driver.findElement(By.name("notetitle")).sendKeys(title);
         driver.findElement(By.id("textarea")).click();
