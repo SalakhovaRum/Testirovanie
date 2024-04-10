@@ -1,4 +1,3 @@
-// В файле LoginHelper.java
 package helpers;
 
 import appmanager.ApplicationManager;
@@ -11,6 +10,10 @@ public class LoginHelper extends HelperBase {
         super(applicationManager, driver);
     }
 
+    public void openLoginPage() {
+        driver.get("https://www.zippyjot.com/");
+    }
+
     public void login(String username, String password) {
         driver.findElement(By.linkText("Log In")).click();
         driver.findElement(By.name("username")).sendKeys(username);
@@ -18,5 +21,4 @@ public class LoginHelper extends HelperBase {
         driver.findElement(By.cssSelector(".ui-button-text")).click();
     }
 
-    // Другие методы, если нужно
 }
