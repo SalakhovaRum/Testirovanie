@@ -11,3 +11,4 @@ public class TestBase {
         applicationManager.quit();
     }
 }
+
