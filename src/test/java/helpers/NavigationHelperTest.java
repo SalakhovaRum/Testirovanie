@@ -18,7 +18,8 @@ public class NavigationHelperTest {
         driver = new ChromeDriver();
 
         // Создание экземпляра ApplicationManager
-        applicationManager = new ApplicationManager();
+        applicationManager = ApplicationManager.getInstance();
+        WebDriver driver = applicationManager.getDriver();
 
         // Инициализация navigationHelper с передачей applicationManager и driver
         navigationHelper = new NavigationHelper(applicationManager, driver);
