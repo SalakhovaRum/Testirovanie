@@ -18,12 +18,10 @@ public class LoginHelper extends HelperBase {
         driver.findElement(By.name("username")).sendKeys(username);
     }
 
-    // Метод для ввода пароля
     public void enterPassword(String password) {
         driver.findElement(By.name("password")).sendKeys(password);
     }
 
-    // Метод для нажатия кнопки входа
     public void clickLoginButton() {
         driver.findElement(By.cssSelector(".ui-button-text")).click();
     }
@@ -35,4 +33,13 @@ public class LoginHelper extends HelperBase {
         driver.findElement(By.cssSelector(".ui-button-text")).click();
     }
 
+    // Добавленный метод для возврата WebDriver
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    // Метод для выхода из аккаунта
+    public void logout() {
+        driver.findElement(By.linkText("Sign Out")).click();
+    }
 }
