@@ -4,7 +4,6 @@ import appmanager.ApplicationManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class NavigationHelperTest {
 
@@ -14,12 +13,11 @@ public class NavigationHelperTest {
 
     @Before
     public void setUp() {
-        // Инициализация драйвера Chrome
-        driver = new ChromeDriver();
-
-        // Создание экземпляра ApplicationManager
+        // Получение экземпляра ApplicationManager
         applicationManager = ApplicationManager.getInstance();
-        WebDriver driver = applicationManager.getDriver();
+
+        // Получение драйвера из ApplicationManager
+        driver = applicationManager.getDriver();
 
         // Инициализация navigationHelper с передачей applicationManager и driver
         navigationHelper = new NavigationHelper(applicationManager, driver);
@@ -27,6 +25,7 @@ public class NavigationHelperTest {
         // Открытие домашней страницы
         navigationHelper.openHomePage();
     }
+
 
     @Test
     public void testNavigation() {

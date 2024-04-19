@@ -15,6 +15,7 @@ public class NavigationHelper extends HelperBase {
 
     public void openHomePage() {
         driver.get("https://www.zippyjot.com/");
+        driver.manage().window().maximize(); // Максимизируем окно при открытии
     }
 
     public void hoverOverElement(String elementText) {
@@ -45,16 +46,6 @@ public class NavigationHelper extends HelperBase {
     public void scrollToElementById(String elementId, int xOffset, int yOffset) {
         WebElement element = driver.findElement(By.id(elementId));
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(" + element.getLocation().x + ", " + element.getLocation().y + ")");
-    }
-
-    public void clickElementByName(String elementName) {
-        WebElement element = driver.findElement(By.name(elementName));
-        element.click();
-    }
-
-    public void sendKeysToElementByName(String elementName, String keys) {
-        WebElement element = driver.findElement(By.name(elementName));
-        element.sendKeys(keys);
     }
 
     public void test(String title, String content) {
