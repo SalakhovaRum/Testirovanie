@@ -1,10 +1,11 @@
 package helpers;
 
 import appmanager.ApplicationManager;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 
 public class LoginHelperTest {
@@ -28,6 +29,10 @@ public class LoginHelperTest {
 
         // Получаем экземпляр WebDriver из LoginHelper
         WebDriver driver = loginHelper.getDriver();
+
+        // Утверждение: Проверяем, что после входа появляется кнопка "Sign Out"
+        boolean isSignedIn = driver.findElement(By.linkText("Sign Out")).isDisplayed();
+        Assert.assertTrue("Пользователь не вошел в систему!", isSignedIn);
 
         // Выполняем необходимые действия после входа
         driver.findElement(By.linkText("Sign Out")).click();

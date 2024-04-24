@@ -55,6 +55,7 @@ public class DeleteHelperTest {
         assertThat(driver.switchTo().alert().getText(), is("Do you really want to Delete this note?"));
         // Принимаем диалоговое окно (подтверждаем удаление)
         driver.switchTo().alert().accept();
+
     }
 
     // Метод для выполнения входа на страницу
