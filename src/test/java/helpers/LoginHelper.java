@@ -4,6 +4,7 @@ import appmanager.ApplicationManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+
 public class LoginHelper extends HelperBase {
 
     public LoginHelper(ApplicationManager applicationManager, WebDriver driver) {

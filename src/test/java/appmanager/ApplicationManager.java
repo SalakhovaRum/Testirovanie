@@ -16,7 +16,7 @@ public class ApplicationManager {
     // Сделать ApplicationManager классом Singleton: добавить статичный метод getInstance() и изменить модификатор доступа у конструктора ApplicationManager на private
     private ApplicationManager() {
         // Установка WebDriver
-        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:\\Chrome\\chromedriver.exe");
         driver = new ChromeDriver();
 
         // Инициализация хелперов
