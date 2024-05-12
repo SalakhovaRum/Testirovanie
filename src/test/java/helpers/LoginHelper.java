@@ -2,8 +2,8 @@ package helpers;
 
 import appmanager.ApplicationManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-
 
 public class LoginHelper extends HelperBase {
 
@@ -28,19 +28,47 @@ public class LoginHelper extends HelperBase {
     }
 
     public void login(String username, String password) {
+        if (IsLoggedIn()) {
+            if (IsLoggedIn(username)) {
+                return; // Уже залогинены под нужным пользователем
+            } else {
+                logout(); // Логаут, если залогинены, но не под нужным пользователем
+            }
+        }
+        // Если не залогинены или залогинены не под нужным пользователем, выполняем вход
         driver.findElement(By.linkText("Log In")).click();
-        driver.findElement(By.name("username")).sendKeys(username);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.cssSelector(".ui-button-text")).click();
+        enterUsername(username);
+        enterPassword(password);
+        clickLoginButton();
     }
 
-    // Добавленный метод для возврата WebDriver
+    public boolean IsLoggedIn() {
+        try {
+            // Проверяем наличие элемента, свидетельствующего о том, что пользователь залогинен
+            return driver.findElement(By.linkText("Sign Out")).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean IsLoggedIn(String username) {
+        try {
+            // Проверяем наличие элемента, свидетельствующего о том, что пользователь залогинен под указанным именем
+            String welcomeMessage = "Welcome, " + username;
+            return driver.findElement(By.xpath("//div[contains(text(), '" + welcomeMessage + "')]")).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public WebDriver getDriver() {
         return driver;
     }
 
-    // Метод для выхода из аккаунта
     public void logout() {
-        driver.findElement(By.linkText("Sign Out")).click();
+        // Проверяем, залогинены ли мы перед логаутом
+        if (IsLoggedIn()) {
+            driver.findElement(By.linkText("Sign Out")).click();
+        }
     }
 }
